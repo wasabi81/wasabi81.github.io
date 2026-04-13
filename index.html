@@ -5,34 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mijn GIF Website</title>
     <style>
-        /* Zorgt dat de pagina de volledige hoogte gebruikt */
+        /* Zorg dat de pagina geen marges heeft en de volledige hoogte gebruikt */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
+            width: 100%;
+            overflow: hidden; /* Voorkomt scrollen */
+            background-color: #000; /* Optioneel: zwarte achtergrond voor de randen */
             display: flex;
-            justify-content: center; /* Horizontaal centreren */
-            align-items: center;     /* Verticaal centreren */
-            background-color: #000000; /* Optioneel: zwarte achtergrond */
+            justify-content: center;
+            align-items: center;
         }
 
-        .gif-container {
-            width: 90%;  /* Neemt 90% van de breedte in op kleine schermen */
-            max-width: 800px; /* Wordt nooit breder dan 800px op laptops */
-        }
-
-        img {
-            width: 100%;    /* Zorgt dat de GIF schaalt naar de container */
-            height: auto;   /* Behoudt de juiste verhoudingen */
-            display: block;
+        .fullscreen-gif {
+            /* Zorgt dat de GIF zich aanpast aan het scherm */
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Behoudt de verhoudingen zonder de GIF af te snijden */
         }
     </style>
 </head>
 <body>
 
-    <div class="gif-container">
-        <img src="cv.gif" alt="Gecentreerde GIF">
-    </div>
+    <img src="cv.gif" alt="Fullscreen GIF" class="fullscreen-gif">
 
 </body>
 </html>
