@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>examples work</title>
+    <title>Responsive GIF met Klikbaar Deel</title>
     <style>
-        /* Zorg dat de pagina geen marges heeft en de volledige hoogte gebruikt */
-        body, html {
+        /* Zorgt dat de GIF in het midden van de pagina komt */
+        body {
             margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden; /* Voorkomt scrollen */
-            background-color: #131313; /* Optioneel: zwarte achtergrond voor de randen */
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Achtergrondkleur van je pagina */
         }
 
-        .fullscreen-gif {
-            /* Zorgt dat de GIF zich aanpast aan het scherm */
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* Behoudt de verhoudingen zonder de GIF af te snijden */
+        /* De container die de GIF en de link vasthoudt */
+        .interactive-container {
+            position: relative;
+            width: 90%;      /* Neemt 90% van de breedte van het scherm in */
+            max-width: 1000px; /* Wordt nooit groter dan 1000px */
+            line-height: 0;  /* Voorkomt witruimte onder de afbeelding */
+        }
+
+        /* De GIF zelf */
+        .interactive-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Optioneel: ronde hoekjes */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Het onzichtbare klikbare vlak */
+        .click-zone {
+            position: absolute;
+            
+            /* PAS DEZE PERCENTAGES AAN */
+            top: 25%;       /* Hoe ver van boven? */
+            left: 20%;      /* Hoe ver van links? */
+            width: 35%;     /* Hoe breed is het vak? */
+            height: 20%;    /* Hoe hoog is het vak? */
+
+            /* Test-instelling: verander 'transparent' naar 'rgba(255,0,0,0.5)' 
+               om een rood vlak te zien terwijl je de positie bepaalt. */
+            background-color: transparent; 
+            
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* Effect wanneer je met de muis over het klikbare deel gaat (optioneel) */
+        .click-zone:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
 
-    <img src="examples.gif" usemap="#image-map">
-<map name="image-map">
-    <area target="" alt="" title="" href="#" coords="821,51,1316,449" shape="rect"></area>
-</map>
+    <div class="interactive-container">
+        <img src="examples.gif" alt="Interactieve GIF">
+
+        <a href="https://jouwbestemming.nl" class="click-zone" title="Klik hier!"></a>
+    </div>
 
 </body>
 </html>
